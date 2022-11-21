@@ -1,34 +1,69 @@
-import React from 'react'
+"use client"
+import { HiAtSymbol, HiFingerPrint } from "react-icons/hi";
+import Image from 'next/image'
+import React, { useState } from 'react'
+import Link from 'next/link'
 
 const LoginPage = () => {
+
+    const [show, setShow] = useState(false)
+
+    
+
   return (
+    <>
     
-    <div className="  flex justify-center items-center flex-col gap-y-4 center mt-5 min-h-[600px] ">
-        <h2 className='text-yellow-600 text-5xl font-extrabold'>Welcome to Kudos</h2>
-        <p className="font-semibold text-slate-300">Log In To Give Some Praise!</p>
+         <section className='w-2/6 mx-auto flex flex-col gap-10'>
+            <div className='title text-center'>
+                <h2 className="text-5xl font-extrabold text-blue-700 mt-5">Welcome to Kudos!</h2>
+        <p className="font-semibold  mt-5 text-blue-700">Log In To Give Some Praise!</p>
 
-        <form method="post" className="rounded-2xl bg-gray-200 p-6 w-96">
-          <label htmlFor="email" className="text-blue-600 font-semibold">
-            Email
-          </label>
-          <input type="text" id="email" name="email" className="w-full p-2 rounded-xl my-2" />
+            </div>
 
-          <label htmlFor="password" className="text-blue-600 font-semibold">
-            Password
-          </label>
-          <input type="password" id="password" name="password" className="w-full p-2 rounded-xl my-2" />
+            {/* Form */}
+            <form className='flex flex-col gap-5'>
+                
+                <div className='input_group'>
+                    
+                    <input 
+                    type="email"
+                    name='email'
+                    placeholder='Email'
+                    className='input_text'
+                    />
+                    <span className='icon flex items-center px-4'>
+                        <HiAtSymbol size={25} />
+                    </span>
+                </div>
+               
+                <div className='input_group'>
+                    
+                    <input 
+                    type={`${show ? "text" : "password"}`}
+                    name='password'
+                    placeholder='Password'
+                    className='input_text'
+                    />
+                     <span className='icon flex items-center px-4' onClick={() => setShow(!show)}>
+                        <HiFingerPrint size={25} />
+                    </span>
+                </div>
 
-          <div className="w-full text-center">
-            <input
-              type="submit"
-              className="rounded-xl mt-2 bg-yellow-300 px-3 py-2 text-blue-600 font-semibold transition duration-300 ease-in-out hover:bg-yellow-400 hover:-translate-y-1"
-              value="Sign In"
-            />
-          </div>
-        </form>
-      
-    </div>
-    
+                {/* login buttons */}
+                <div className='button'>
+                    <button type='submit'>
+                        Login
+                    </button>
+                </div>
+               
+            </form>
+
+            {/* Bottom */}
+            <p className='text-center text-red-400 '>
+                Don&apos;t have an account yet? <Link href={'/register'} className='text-blue-700'>Sign Up</Link>
+            </p>
+        </section>
+    </>
     
   )
 }
