@@ -21,6 +21,14 @@ const Header = () => {
               Users
             </Link>
           </li>
+          <li>
+            <Link
+              className='text-sm font-medium uppercase text-stone-500'
+              href='/login'
+            >
+              Login
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>

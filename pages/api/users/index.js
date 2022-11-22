@@ -1,3 +1,4 @@
+import prisma from '../../../lib/prisma'
 import { createUser, getUsers } from '../../../lib/prisma/users'
 
 const handler = async (req, res) => {
@@ -11,16 +12,22 @@ const handler = async (req, res) => {
     }
   }
 
-  if (req.method === 'POST') {
+  // Run if the request was a post request
+  if (req.method == "POST") {
     try {
-      const data = req.body
-      const { user, error } = await createUser(data)
-      if (error) throw new Error(error)
-      return res.status(200).json({ user })
-    } catch (error) {
+    // Get email, password from the request body
+    const { email, password } = req.body;
+
+    // Create a new user
+    
+    const user = await createUser(email, password );
+    // return created user
+    return res.status(200).json({ success: true, user});
+    }  catch (error) {
       return res.status(500).json({ error: error.message })
     }
   }
+
 
   res.setHeader('Allow', ['GET', 'POST'])
   res.status(425).end(`Method ${req.method} is not allowed.`)

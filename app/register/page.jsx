@@ -2,13 +2,14 @@
 import { HiAtSymbol, HiFingerPrint } from "react-icons/hi";
 import Image from 'next/image'
 import React, { useState } from 'react'
+
 import Link from 'next/link'
 
-const LoginPage = () => {
+const RegisterPage = () => {
 
     const [show, setShow] = useState(false)
 
-    
+   
 
   return (
     <>
@@ -51,8 +52,8 @@ const LoginPage = () => {
 
                 {/* login buttons */}
                 <div className='button'>
-                    <button type='submit'>
-                        Login
+                    <button type='submit' >
+                        Sign up
                     </button>
                 </div>
                
@@ -60,7 +61,7 @@ const LoginPage = () => {
 
             {/* Bottom */}
             <p className='text-center text-red-400 '>
-                Don&apos;t have an account yet? <Link href={'/register'} className='text-blue-700'>Sign Up</Link>
+                Already have an account? <Link href={'/login'} className='text-blue-700'>Login</Link>
             </p>
         </section>
     </>
@@ -68,4 +69,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default RegisterPage
